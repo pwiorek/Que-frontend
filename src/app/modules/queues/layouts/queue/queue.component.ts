@@ -65,7 +65,7 @@ export class QueueComponent implements OnInit {
   }
 
   isLessonOccurrenceCurrent(occurrence: LessonOccurrence): boolean {
-    return new Date(this.datePipe.transform(occurrence.date + ', ' + occurrence.time)).getTime() >= new Date().setMinutes(new Date().getMinutes() - 45);
+    return new Date(this.datePipe.transform(occurrence.date + ' ' + occurrence.time)).getTime() >= new Date().setMinutes(new Date().getMinutes() - 45);
   }
 
   
