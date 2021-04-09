@@ -1,18 +1,23 @@
 <div class="layout-organizer">
     <section>
         <div class="login-container">
+            <h2 class="demo">Demo Version</h2>
             <form class="login-form" #form="ngForm" [formGroup]="loginForm" (ngSubmit)="logIn(form)">
                 <mat-form-field class="example-full-width">
                     <mat-label>Username</mat-label>
-                    <input matInput type="text" maxlength="25" name="username" formControlName="username" autocomplete="on">
+                    <mat-select formControlName="username">
+                        <mat-option *ngFor="let user of users" value="{{ user }}">
+                            {{ user }}
+                        </mat-option>
+                    </mat-select>
                 </mat-form-field>
 
                 <mat-form-field class="example-full-width">
-                    <mat-label>Password</mat-label>
+                    <mat-label>You don't need password here :)</mat-label>
                     <input matInput type="password" maxlength="30" name="password" formControlName="password" autocomplete="on">
                 </mat-form-field>
 
-                <button class="login-button" [disabled]="loading" mat-raised-button type="submit">
+                <button [disabled]="loading" mat-raised-button type="submit">
                     <mat-spinner *ngIf="loading; else login" class="loading" [diameter]="24" ></mat-spinner>
                     <ng-template #login>
                         <p class="login-text">Login</p>
@@ -20,6 +25,11 @@
 
                 </button>
             </form>
+            <a href="https://que.jupw.net">
+                <button class="redirect-btn" mat-raised-button>
+                    Full Version
+                </button>
+            </a>
         </div>
         <div class="logo-container">
             <div class="triangle-left"></div>
@@ -27,6 +37,6 @@
             <div class="triangle-right"></div>
         </div>
     </section>
-    <p class="version">v{{ version }}</p>
+    <p class="version">v{{ version }}  -  App was developed with Desktop-First approach and responsive version is not available yet.</p>
 </div>
 

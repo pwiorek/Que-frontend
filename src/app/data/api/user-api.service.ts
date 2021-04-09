@@ -29,4 +29,9 @@ export class UserApiService {
     const requestUrl = `${this.globals.BASE_URL}/account/changepass`;
     return this.http.post(requestUrl, {oldPassword, newPassword}, {observe: 'response'});
   }
+
+  getAllUsers() {
+    const requestUrl = 'https://demoqueapi.jupw.net/api/demo/users';
+    return this.http.get<User[]>(requestUrl);
+  }
 }
