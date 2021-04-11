@@ -25,6 +25,8 @@ section {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: relative;
+
 }
 
 .login-form {
@@ -87,10 +89,16 @@ button {
     align-self: center;
 }
 
+.icon-github {
+    width: 35px;
+    bottom: 2vw;
+    position: absolute;
+    transform: translateX(-50%);
+}
+
 .demo {
     transform: translateY(-27px);
     font-weight: 400;
-    // font-size: 1.7em;
 }
 
 .triangle-left {

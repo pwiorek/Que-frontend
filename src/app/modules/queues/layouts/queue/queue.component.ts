@@ -34,12 +34,14 @@ export class QueueComponent implements OnInit {
     this.fetchOccurrences(8);
   }
 
+  // TODO: Process of calculating queue for specific user is to be further optimized
+
   fetchOccurrences(num: number) {
-    merge(this.fetchNextUserOccurrences(num), this.fetchPastUserOccurrence()).pipe(
+    merge(this.fetchNextUserOccurrences(), this.fetchPastUserOccurrence()).pipe(
       toArray(),
-      tap(occurrences => occurrences.sort((a, b) => (+this.datePipe.transform(a.date, 'yyyyMMdd')) - (+this.datePipe.transform(b.date, 'yyyyMMdd')))),
-    ).subscribe(occurrences => this.userOccurrences = occurrences);
-  }
+      tap(occurrences => occurrences.sort((a, b) => (+this.datePipe.transform(a.date, 'yyyyMMdd')) - (+this.datePipe.transform(b.date, 'yyyyMMdd'))))
+    ).subscribe(occurrences => this.userOccurrences = occurrences.slice(0, num));
+  } 
 
   fetchPastUserOccurrence(): Observable<LessonOccurrence> {
     return this.occurrenceApi.updateOccurrences().pipe(
@@ -48,7 +50,7 @@ export class QueueComponent implements OnInit {
     );
   }
 
-  fetchNextUserOccurrences(num: number): Observable<LessonOccurrence> {
+  fetchNextUserOccurrences(): Observable<LessonOccurrence> {
     return this.subjectApi.getAllSubjects().pipe(
       flatMap(subjects => subjects),
       flatMap(subject => this.lessonApi.getLessons(subject.id).pipe(
@@ -60,7 +62,7 @@ export class QueueComponent implements OnInit {
         tap(occurrence => occurrence["lesson"] = lesson)
       )),
       filter(occurrence => occurrence.userId === (+this.userId)),
-      take(num)
+     
     );
   }
 
