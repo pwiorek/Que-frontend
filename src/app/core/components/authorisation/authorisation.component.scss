@@ -91,9 +91,17 @@ button {
 
 .icon-github {
     width: 35px;
-    bottom: 2vw;
+    bottom: 4vh;
     position: absolute;
     transform: translateX(-50%);
+}
+
+@media only screen and (max-height: 750px) {
+    .icon-github {
+        bottom: 10px;
+        left: 10px;
+        transform: none;
+    }
 }
 
 .demo {
