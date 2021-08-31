@@ -1,4 +1,4 @@
-@import "src/variables.scss";
+@import "../../../scss/variables";
 
 
 section {
@@ -82,11 +82,11 @@ section {
     background-color: rgb(26,47,51);
     white-space: pre-line;
     cursor: pointer;
-    
+
     &:hover {
         background-color: rgb(20,36,39);
         color: white;
-        
+
     }
 
     p {

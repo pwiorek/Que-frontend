@@ -1,4 +1,4 @@
-@import 'src/variables.scss';
+@import 'app/scss/variables';
 
 * {
     font-family: $mainfont;
@@ -14,7 +14,7 @@ body { margin: 0; }
 .mat-list-base .mat-list-item .mat-list-item-content, .mat-list-base .mat-list-option .mat-list-item-content {
     text-align: center;
     justify-content: center;
-    
+
 }
 
 .basic-snackbar {
