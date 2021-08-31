@@ -1,4 +1,5 @@
-@import '../../../scss/variables';
+@import 'src/app/scss/variables';
+@import 'src/app/scss/mixins';
 
 .layout-organizer {
     height: 100%;
@@ -7,6 +8,7 @@
     justify-content: center;
     align-items: center;
     background-color: #f4f4f4;
+    position: relative;
 }
 
 section {
@@ -25,6 +27,21 @@ section {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    z-index: 1000;
+
+  @include respond-to('phone') {
+    width: 100%;
+    position: relative;
+  }
+
+  .logo {
+    display: none;
+
+    @include respond-to('phone') {
+      display: block;
+      top: 20px;
+    }
+  }
 }
 
 .login-form {
@@ -33,7 +50,11 @@ section {
     justify-content: center;
     align-items: center;
     width: 60%;
-}
+
+    @include respond-to('phone') {
+      margin-top: 10%;
+    }
+  }
 
 mat-form-field {
     width: 100%;
@@ -71,6 +92,12 @@ mat-form-field {
     position: relative;
     display: flex;
     justify-content: center;
+
+    @include respond-to('phone') {
+      width: 0;
+      height: 0;
+      display:none;
+    }
 }
 
 .logo {
@@ -81,26 +108,43 @@ mat-form-field {
     align-self: center;
 }
 
+.triangle {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  position: absolute;
+}
+
 .triangle-left {
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 38vh 38vh 0 0;
+    border-width: 38vh 28vw 0 0;
     border-color: $secondcolor transparent transparent transparent;
-    position: absolute;
     left: 0;
     top: 0;
 }
 
 .triangle-right {
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 0 0 38vh 38vh;
+    border-width: 0 0 38vh 28vw;
     border-color: transparent transparent $maincolor transparent;
-    position: absolute;
     right: 0;
     bottom: 0;
+}
+
+.triangle__big--left {
+  border-width: 70vh 75vw 0 0;
+  display: none;
+
+  @include respond-to('phone') {
+    display: block;
+  }
+}
+
+.triangle__big--right {
+  border-width: 0 0 70vh 75vw;
+  display: none;
+
+  @include respond-to('phone') {
+    display: block;
+  }
 }
 
 .version {

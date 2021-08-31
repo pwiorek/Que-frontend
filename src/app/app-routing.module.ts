@@ -14,7 +14,7 @@ import { ChangePasswordComponent } from './modules/settings/layouts/change-passw
 import { CreditsComponent } from './modules/settings/layouts/credits/credits.component';
 
 const routes: Routes = [
-  { path: 'auth', component: AuthorisationComponent, canActivate: [MobileBlockerService] },
+  { path: 'auth', component: AuthorisationComponent },
   { path: 'exchanges', component: ExchangesComponent, canActivate: [AuthGuardService && MobileBlockerService] },
   { path: 'exchanges/incoming', component: IncomingExchangesComponent, canActivate: [AuthGuardService && MobileBlockerService] },
   { path: 'exchanges/outgoing', component: OutgoingExchangesComponent, canActivate: [AuthGuardService && MobileBlockerService] },
