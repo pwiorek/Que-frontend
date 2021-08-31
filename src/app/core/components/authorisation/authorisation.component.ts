@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { Globals } from 'src/app/globals';
-import { AuthenticationService } from 'src/app/auth/services/authentication.service'
+import { AuthenticationService } from 'src/app/auth/services/authentication.service';
 
 @Component({
   selector: 'app-authorisation',
@@ -11,7 +11,7 @@ import { AuthenticationService } from 'src/app/auth/services/authentication.serv
   styleUrls: ['./authorisation.component.scss']
 })
 export class AuthorisationComponent implements OnInit {
-  loading: boolean = false;
+  loading = false;
   version: string = this.globals.VERSION;
 
   loginForm: FormGroup = this.formBuilder.group({
@@ -27,9 +27,9 @@ export class AuthorisationComponent implements OnInit {
     private globals: Globals
     ) { }
 
-  ngOnInit() {}
+  ngOnInit(): void {}
 
-  logIn(form: NgForm) {
+  logIn(form: NgForm): void {
     this.loading = true;
 
     this.authenticationService.logIn(form.value.username, form.value.password).subscribe(
