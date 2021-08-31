@@ -1,0 +1,13 @@
+@import 'variables';
+
+@mixin respond-to($breakpoint) {
+  @if map-has-key($map: $breakpoints, $key: $breakpoint) {
+    @media (min-width: map-get($map: $breakpoints, $key: $breakpoint)) {
+      @content;
+    }
+  }
+  @else {
+    @warn "There is no breakpoint matched to '#{breakpoint}'."
+            + "Available breakpoints are: #{map-keys($breakpoints)}.";
+  }
+}
