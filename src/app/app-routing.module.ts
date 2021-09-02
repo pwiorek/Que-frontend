@@ -18,7 +18,7 @@ const routes: Routes = [
   { path: 'exchanges', component: ExchangesComponent, canActivate: [AuthGuardService && MobileBlockerService] },
   { path: 'exchanges/incoming', component: IncomingExchangesComponent, canActivate: [AuthGuardService && MobileBlockerService] },
   { path: 'exchanges/outgoing', component: OutgoingExchangesComponent, canActivate: [AuthGuardService && MobileBlockerService] },
-  { path: 'schedule', component: ScheduleComponent, canActivate: [AuthGuardService && MobileBlockerService] },
+  { path: 'schedule', component: ScheduleComponent, canActivate: [AuthGuardService] },
   { path: 'settings/change-password', component: ChangePasswordComponent, canActivate: [AuthGuardService && MobileBlockerService] },
   { path: 'settings/credits', component: CreditsComponent, canActivate: [AuthGuardService && MobileBlockerService] },
   { path: 'settings', redirectTo: '/settings/change-password', pathMatch: 'full'},
