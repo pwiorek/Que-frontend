@@ -10,6 +10,8 @@ import { Subject as rxSubject, Subscription} from 'rxjs';
 import { mergeMap } from 'rxjs/operators';
 import { EntityType } from '../../enums/entityType.enum'
 import { ActiveNavElement } from 'src/app/shared/components/navbar/navbar.component';
+import {MediaService} from '../../../../shared/services/media.service';
+import {ViewBreakpoints} from '../../../../globals';
 
 
 @Component({
@@ -19,7 +21,7 @@ import { ActiveNavElement } from 'src/app/shared/components/navbar/navbar.compon
 })
 export class ScheduleComponent implements OnInit, OnDestroy {
   activeNavElement: ActiveNavElement = ActiveNavElement.SCHEDULE;
-  
+
   subjects: Subject[];
 
   lessons: Lesson[];
@@ -35,6 +37,8 @@ export class ScheduleComponent implements OnInit, OnDestroy {
   private currentLessonChange: rxSubject<Lesson> = new rxSubject<Lesson>();
 
   private subscription: Subscription;
+  isMobile: boolean;
+  private mediaService = new MediaService(`(max-width: ${ViewBreakpoints.phone})`);
 
   constructor(
     private subjectApi: SubjectApiService,
@@ -43,9 +47,14 @@ export class ScheduleComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
+    this.mediaService.match$.subscribe(value => {
+      this.isMobile = value;
+      this.mobileQuery();
+    });
+
     //Subscribe changes for lessons and queue
     this.subscription = this.lessonsChange.subscribe(lessons => this.lessons = lessons);
-    this.subscription.add(this.queueChange.subscribe(queue => this.queue = queue)); 
+    this.subscription.add(this.queueChange.subscribe(queue => this.queue = queue));
 
     //Get entities of subjects, lessons and occurrences from API
     this.subscription.add(this.subjectApi.getAllSubjects().subscribe(subjects => this.subjects = subjects));
@@ -75,10 +84,14 @@ export class ScheduleComponent implements OnInit, OnDestroy {
       }
       case EntityType.LESSON: {
         this.currentLesson = object;
-        this.currentLessonChange.next(this.currentLesson);        
+        this.currentLessonChange.next(this.currentLesson);
         break;
       }
     }
+  }
+
+  mobileQuery(): void {
+    console.log('a');
   }
 }
 

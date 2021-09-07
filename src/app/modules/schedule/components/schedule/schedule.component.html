@@ -9,7 +9,7 @@
                     </mat-list-option>
                 </mat-selection-list>
             </div>
-            <app-divider></app-divider>
+            <app-divider *ngIf="!isMobile"></app-divider>
             <div class="container">
                 <mat-selection-list #lesson [multiple]="false">
                     <mat-list-option *ngFor="let lesson of lessons" (click)="setCurrentObject('lesson', lesson)">
@@ -17,7 +17,7 @@
                     </mat-list-option>
                 </mat-selection-list>
             </div>
-            <app-divider></app-divider>
+          <app-divider *ngIf="!isMobile"></app-divider>
             <div class="container">
                 <mat-list #occurrences>
                     <mat-list-item class="occurrence-tile" *ngFor="let occurrence of queue">
@@ -30,5 +30,5 @@
             <mat-spinner></mat-spinner>
         </ng-template>
     </section>
-    
+
 </div>

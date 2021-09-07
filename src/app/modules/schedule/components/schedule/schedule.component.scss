@@ -1,4 +1,5 @@
-@import "../../../../scss/variables";
+@import "src/app/scss/variables";
+@import "src/app/scss/mixins";
 
 .layout-organizer {
     display: flex;
@@ -14,6 +15,10 @@ section {
     grid-template-rows: 1fr;
     overflow: hidden;
     margin-top: $navbarheight;
+
+  @include respond-to('phone') {
+    grid-template-columns: repeat(3, 100%);
+  }
 }
 
 .container {
