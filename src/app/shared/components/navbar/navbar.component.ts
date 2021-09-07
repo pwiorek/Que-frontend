@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/auth/services/authentication.service';
 
 
-export interface navElement {
+export interface NavElement {
   icon: string;
   text: string;
   link: string;
@@ -29,7 +29,7 @@ export enum ActiveNavElement {
 export class NavbarComponent implements OnInit {
   @Input('active') activeNavElement: ActiveNavElement;
 
-  list: navElement[] = [
+  list: NavElement[] = [
     { icon: 'event', text: 'SCHEDULE', link: 'schedule', verifier: ActiveNavElement.SCHEDULE},
     { icon: 'swap_horiz', text: 'EXCHANGE' + '\n' + 'REQUEST', link: 'exchanges', verifier: ActiveNavElement.EXCHANGE_SEND},
     { icon: 'save_alt', text: 'INCOMING' + '\n' + 'REQUESTS', link: 'exchanges/incoming', verifier: ActiveNavElement.EXCHANGE_INCOMING},
