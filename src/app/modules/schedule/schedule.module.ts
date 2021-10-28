@@ -7,15 +7,17 @@ import { ScheduleComponent } from './components/schedule/schedule.component';
 import { MaterialModule } from 'src/app/material.module';
 import { DividerComponent } from './components/divider/divider.component';
 import { PipesModule } from 'src/app/pipes/pipes.module';
+import {CoreModule} from '../../core/core.module';
 
 @NgModule({
   declarations: [ScheduleComponent, DividerComponent],
-  imports: [
-    CommonModule,
-    SharedModule,
-    MaterialModule,
-    PipesModule
-  ],
+    imports: [
+        CommonModule,
+        SharedModule,
+        MaterialModule,
+        PipesModule,
+        CoreModule
+    ],
   exports: [
     ScheduleComponent
   ]

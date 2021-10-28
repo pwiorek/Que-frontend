@@ -4,11 +4,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { MaterialModule } from '../material.module';
 import { AuthorisationComponent } from './components/authorisation/authorisation.component';
-import { SharedModule } from '../shared/shared.module'
+import { SharedModule } from '../shared/shared.module';
+import { NotificationsTestComponent } from './services/notifications-test/notifications-test.component'
 
 
 @NgModule({
-  declarations: [AuthorisationComponent],
+  declarations: [AuthorisationComponent, NotificationsTestComponent],
   imports: [
     CommonModule,
     MaterialModule,
@@ -16,7 +17,8 @@ import { SharedModule } from '../shared/shared.module'
     ReactiveFormsModule
   ],
   exports: [
-    AuthorisationComponent
+    AuthorisationComponent,
+    NotificationsTestComponent
   ]
 })
 export class CoreModule { }

@@ -18,7 +18,9 @@ import { ErrorService } from './shared/services/error.service';
 import { SettingsModule } from './modules/settings/settings.module';
 import { QueuesModule } from './modules/queues/queues.module';
 import { PipesModule } from './pipes/pipes.module';
-import { MobileBlockerModule } from './modules/mobile-blocker/mobile-blocker.module'
+import { MobileBlockerModule } from './modules/mobile-blocker/mobile-blocker.module';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment'
 
 @NgModule({
   declarations: [
@@ -38,15 +40,16 @@ import { MobileBlockerModule } from './modules/mobile-blocker/mobile-blocker.mod
     SettingsModule,
     QueuesModule,
     PipesModule,
-    MobileBlockerModule
+    MobileBlockerModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     DatePipe,
     Globals,
-    { 
-      provide: HTTP_INTERCEPTORS, 
-      useClass: JwtInterceptor, 
-      multi: true 
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+      multi: true
     },
     {
       provide: ErrorHandler,

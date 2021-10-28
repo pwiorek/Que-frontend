@@ -15,14 +15,14 @@ import { CreditsComponent } from './modules/settings/layouts/credits/credits.com
 
 const routes: Routes = [
   { path: 'auth', component: AuthorisationComponent },
-  { path: 'exchanges', component: ExchangesComponent, canActivate: [AuthGuardService && MobileBlockerService] },
-  { path: 'exchanges/incoming', component: IncomingExchangesComponent, canActivate: [AuthGuardService && MobileBlockerService] },
-  { path: 'exchanges/outgoing', component: OutgoingExchangesComponent, canActivate: [AuthGuardService && MobileBlockerService] },
-  { path: 'schedule', component: ScheduleComponent, canActivate: [AuthGuardService && MobileBlockerService] },
-  { path: 'settings/change-password', component: ChangePasswordComponent, canActivate: [AuthGuardService && MobileBlockerService] },
-  { path: 'settings/credits', component: CreditsComponent, canActivate: [AuthGuardService && MobileBlockerService] },
+  { path: 'exchanges', component: ExchangesComponent, canActivate: [AuthGuardService] },
+  { path: 'exchanges/incoming', component: IncomingExchangesComponent, canActivate: [AuthGuardService] },
+  { path: 'exchanges/outgoing', component: OutgoingExchangesComponent, canActivate: [AuthGuardService] },
+  { path: 'schedule', component: ScheduleComponent, canActivate: [AuthGuardService] },
+  { path: 'settings/change-password', component: ChangePasswordComponent, canActivate: [AuthGuardService] },
+  { path: 'settings/credits', component: CreditsComponent, canActivate: [AuthGuardService] },
   { path: 'settings', redirectTo: '/settings/change-password', pathMatch: 'full'},
-  { path: 'queue', component: QueueComponent, canActivate: [AuthGuardService && MobileBlockerService] },
+  { path: 'queue', component: QueueComponent, canActivate: [AuthGuardService] },
   { path: 'mobile-block', component: MobileBlockerComponent },
   { path: '**', redirectTo: '/schedule', pathMatch: 'full'},
 ];
