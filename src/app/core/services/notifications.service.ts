@@ -27,7 +27,7 @@ export class NotificationsService {
     });
 
     this.swPush.messages.subscribe(value => {
-      console.log(value);
+      alert(value);
     })
   }
 
